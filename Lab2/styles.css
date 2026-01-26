@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    overflow: hidden;
+    background-color: #d394e4;
+    color: #4d125d;
+    padding: 20px;
+    width: 90%;
+    margin: 20px auto;
+}
+
+.float-left {
+    float: left;
+}
+
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border: 3px solid white;
+}
+
+.menu {
+    overflow: hidden;
+    background-color: #d394e4;
+    padding: 20px;
+    width: 90%;
+    height: 100px;
+    margin: 20px auto;
+}
+
+.menu-button {
+    padding: 16px;
+    background-color: #4d125d;
+    border-radius: 10px;
+    display: inline-block;
+    color: white;
+    margin-right: 20px; 
+    width: 160px; 
+    text-align: center;
+}
+
+.menu-button:hover {
+    background-color: #dd7dcb;
+}
