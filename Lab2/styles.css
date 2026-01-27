@@ -61,12 +61,19 @@ body {
     border: 3px solid #4d125d;
     display: block;
     margin-bottom: 20px;
+    position: sticky;
+    top: 0;
 }
 
 .mid-section {
     width: 90%;
-    overflow: hidden;
     margin: 20px auto;
+}
+
+.mid-section::after {
+    content: "";
+    display: block;
+    clear: both;
 }
 
 .content-box {
@@ -151,9 +158,24 @@ body {
     margin-top: 15px;
 }
 
+.nwp-front {
+    height: 120px;
+    width: 120px;
+    position: fixed;
+    bottom: 220px;
+    right: 20px;
+    border-radius: 50%;
+    border: 3px solid #4d125d;
+    object-fit: cover;
+}
+
 .strikethrough {
-      text-decoration: line-through;
-  }
+    text-decoration: line-through;
+}
+
+.checked {
+    background-color: rgb(189, 182, 182);
+}
 
 .main-content {
     width: 56%;
@@ -166,8 +188,64 @@ body {
 
 .footer {
     width: 90%;
-    height: 150px;
+    height: 200px;
     background-color: #f1ea84;
     border: 3px solid #4d125d;
-    margin: 20px auto;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.footer-div {
+    float:left;
+    height: 100px;
+    width: 200px; 
+}
+
+.footer-div a {
+    display: block;
+    padding: 20px;
+    text-decoration: none;
+}
+
+.footer-div a:hover {
+    text-decoration: underline;
+}
+
+.footer-link {
+    float: left; 
+    margin-top: 80px; 
+}
+
+.footer-image {
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.facebook-icon {
+    background-image: url('public/facebook-grey.png');
+}
+
+.facebook-icon:hover {
+    background-image: url('public/facebook.png');
+}
+
+.instagram-icon {
+    background-image: url('public/instagram-grey.png');
+}
+
+.instagram-icon:hover {
+    background-image: url('public/instagram.png');
+}
+
+.youtube-icon {
+    background-image: url('public/youtube-grey.png');
+}
+
+.youtube-icon:hover {
+    background-image: url('public/youtube.png');
 }
