@@ -2,27 +2,52 @@ article:first-of-type {
     background-color: rgb(66, 37, 2);
     color: rgb(245, 201, 147);
     font-style: italic;
+    padding: 10px; 
+    margin: 10px; 
 }
 
 article:first-of-type > div {
     background-color: rgb(245, 201, 147);
     color: rgb(66, 37, 2);
     font-style: normal;
-    
+    border: 2px solid transparent;
+    margin: 10px; 
+}
+
+article:first-of-type:hover > div {
+    opacity: 0.5;
+}
+
+article:first-of-type > div:hover {
+    border: 2px solid red;
+    opacity: 1; 
 }
 
 article:last-of-type {
     background-color: rgb(245, 201, 147);
     color: rgb(66, 37, 2);
     font-style: italic;
+    padding: 10px; 
+    margin: 10px; 
 }
 
 article:last-of-type > div {
     background-color: rgb(66, 37, 2);
     color: rgb(245, 201, 147);
     font-style: normal;
+    border: 2px solid transparent;
+    margin: 10px; 
 }
 
 article:last-of-type .task1 blockquote {
     font-style: italic;
+}
+
+article:last-of-type:hover > div {
+    opacity: 0.5;
+}
+
+article:last-of-type > div:hover {
+    border: 2px dotted pink;
+    opacity: 1; 
 }
