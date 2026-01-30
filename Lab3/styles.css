@@ -1,0 +1,28 @@
+article:first-of-type {
+    background-color: rgb(66, 37, 2);
+    color: rgb(245, 201, 147);
+    font-style: italic;
+}
+
+article:first-of-type > div {
+    background-color: rgb(245, 201, 147);
+    color: rgb(66, 37, 2);
+    font-style: normal;
+    
+}
+
+article:last-of-type {
+    background-color: rgb(245, 201, 147);
+    color: rgb(66, 37, 2);
+    font-style: italic;
+}
+
+article:last-of-type > div {
+    background-color: rgb(66, 37, 2);
+    color: rgb(245, 201, 147);
+    font-style: normal;
+}
+
+article:last-of-type .task1 blockquote {
+    font-style: italic;
+}
