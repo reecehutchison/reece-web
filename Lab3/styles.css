@@ -2,8 +2,8 @@ article:first-of-type {
     background-color: rgb(66, 37, 2);
     color: rgb(245, 201, 147);
     font-style: italic;
-    padding: 10px; 
-    margin: 10px; 
+    padding: 10px;
+    margin: 10px;
 }
 
 article:first-of-type > div {
@@ -11,7 +11,7 @@ article:first-of-type > div {
     color: rgb(66, 37, 2);
     font-style: normal;
     border: 2px solid transparent;
-    margin: 10px; 
+    margin: 10px;
 }
 
 article:first-of-type:hover > div {
@@ -20,15 +20,15 @@ article:first-of-type:hover > div {
 
 article:first-of-type > div:hover {
     border: 2px solid red;
-    opacity: 1; 
+    opacity: 1;
 }
 
 article:last-of-type {
     background-color: rgb(245, 201, 147);
     color: rgb(66, 37, 2);
     font-style: italic;
-    padding: 10px; 
-    margin: 10px; 
+    padding: 10px;
+    margin: 10px;
 }
 
 article:last-of-type > div {
@@ -36,7 +36,7 @@ article:last-of-type > div {
     color: rgb(245, 201, 147);
     font-style: normal;
     border: 2px solid transparent;
-    margin: 10px; 
+    margin: 10px;
 }
 
 article:first-of-type .task1 {
@@ -71,8 +71,152 @@ article:first-of-type .task1:hover > div {
     display: block;
 }
 
+article:first-of-type .task2 li:first-child {
+    background-color: orange;
+    color: rgb(220, 50, 80);
+    font-weight: bold;
+    width: fit-content;
+}
+
+article:first-of-type .task2 li:not(.special) {
+    color: rgb(220, 50, 80);
+}
+
+article:first-of-type .task2 li.special {
+    color: black;
+    font-weight: bold;
+}
+
+article:first-of-type .task2 li:nth-child(4) {
+    font-style: italic;
+    font-weight: lighter;
+}
+
+article:first-of-type .task2 li:nth-child(odd) {
+    font-weight: bold;
+}
+
 article:last-of-type .task1 blockquote {
     font-style: italic;
+    position: relative;
+    margin: 30px;
+    padding: 20px;
+    border: none;
+}
+
+article:last-of-type .task1 blockquote::before {
+    content: "\201C";
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    background-color: orange;
+    color: white;
+    font-size: 24px;
+    font-style: normal;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+article:last-of-type .task1 blockquote::after {
+    content: "\201D";
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    background-color: orange;
+    color: white;
+    font-size: 24px;
+    font-style: normal;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+article:last-of-type .task1:hover h4 {
+    color: rgb(184, 59, 2);
+}
+
+article:last-of-type .task1:hover blockquote::before,
+article:last-of-type .task1:hover blockquote::after {
+    background-color: rgb(184, 59, 2);
+}
+
+article:last-of-type .task2 li {
+    padding-left: 10px;
+}
+
+article:last-of-type .task2 li:nth-child(even)::marker {
+    content: "\01F60A ";
+}
+
+article:last-of-type .task3 span:first-child::before {
+    content: ">> ";
+}
+
+article:last-of-type .task3 span:first-child::after {
+    content: " / ";
+}
+
+article:last-of-type .task3 .wrong {
+    position: relative;
+    background-color: rgb(93, 60, 18);
+    width: fit-content;
+    padding: 15px;
+    margin-left: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+article:last-of-type .task3 .wrong::after {
+    content: "X";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 80px;
+    font-weight: 100;
+    color: red;
+}
+
+article:last-of-type .task3 .correct {
+    position: relative;
+    background-color: rgb(93, 60, 18);
+    width: fit-content;
+    padding: 15px;
+    margin-left: 30px;
+}
+
+article:last-of-type .task3 .correct::after {
+    content: "\2713";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 80px;
+    font-weight: 100;
+    color: green;
+}
+
+article:last-of-type .task3 span:first-child:hover {
+    background-color: rgb(130, 90, 40);
+}
+
+article:last-of-type .task3 span:first-child:hover ~ .correct {
+    background-color: rgb(130, 90, 40);
+}
+
+article:last-of-type .task3 span:last-of-type:hover {
+    background-color: rgb(130, 90, 40);
+}
+
+article:last-of-type .task3 span:last-of-type:hover ~ .wrong {
+    background-color: rgb(130, 90, 40);
 }
 
 article:last-of-type:hover > div {
@@ -81,5 +225,5 @@ article:last-of-type:hover > div {
 
 article:last-of-type > div:hover {
     border: 2px dotted pink;
-    opacity: 1; 
+    opacity: 1;
 }
