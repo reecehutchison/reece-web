@@ -74,11 +74,12 @@ body {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
   text-decoration: none;
   display: inline-block;
+  transform: rotateX(30deg);
   transition: background-color 0.3s, color 0.3s, transform 0.3s;
 }
 
 .tab-button:hover {
-  background-color: rgb(86, 0, 86);
+  background: linear-gradient(rgb(255, 255, 255), rgb(44, 8, 84));
   color: white;
   font-style: normal;
   transform: scale(1.05);
