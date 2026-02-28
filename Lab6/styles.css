@@ -39,6 +39,14 @@
   display: none;
 }
 
+#nwp-year {
+  display: none; 
+}
+
+#career {
+  display: none;
+}
+
 #user-text {
   padding: 5px; 
   margin: 5px; 
