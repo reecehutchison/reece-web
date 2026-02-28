@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js"></script>
+</head>
+<body>
+  <div class="container-col">
+    <div id="header" class="container-row">
+      <div style="display: flex; flex-direction: row;">
+        <button class="button" onclick="login()">Log in</button>
+        <button class="button" id="say-hi" onclick="sayHi()">Say Hi</button>
+        <button class="button" id="fav-animal" onclick="favAnimal()">Fav Animal</button>
+      </div>
+      <p id="user-text"></p>
+    </div>
+    <div id="content">
+      <p id="content-text"></p>
+      <img id="animal-img" alt="animal" src="" style="display:none">
+    </div>
+  </div>
+</body>
+</html>

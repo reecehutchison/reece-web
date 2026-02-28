@@ -1,0 +1,64 @@
+* {
+  padding: 0px;
+  margin: 0px; 
+}
+
+.container-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start; 
+  width: 100%; 
+}
+
+.container-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#header {
+  width: 100%; 
+  height: 200px; 
+  background-color: darkgreen;
+  justify-content: space-between;
+}
+
+.button {
+  background-color: lightgreen; 
+  padding: 5px; 
+  margin: 5px; 
+  border-radius: 20%;
+  width: 70px;
+}
+
+#say-hi {
+  display: none; 
+}
+
+#fav-animal {
+  display: none;
+}
+
+#user-text {
+  padding: 5px; 
+  margin: 5px; 
+}
+
+#content {
+  width: 100%; 
+  height: 600px; 
+  background-color: green;
+  justify-content: space-between;
+}
+
+#animal-img {
+  padding: 5px; 
+  margin: 5px; 
+}
+
+#content-text {
+  padding: 5px; 
+  margin: 5px; 
+  background-color: lightgreen;
+  display: none;
+}
