@@ -1,0 +1,143 @@
+.header {
+  background-color: #e57373;
+  color: darkred;
+  padding: 10px;
+  margin: 10px;
+}
+
+#task1 {
+  border: 1px solid black;
+  display: inline-block;
+  width: 100%;
+}
+
+.number-generator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #ef9a9a;
+  padding: 20px;
+}
+
+.number-generator .num-display {
+  background-color: white;
+  border: 2px solid #c62828;
+  padding: 5px 15px;
+  font-size: 1.2em;
+  font-weight: bold;
+  min-width: 30px;
+  text-align: center;
+}
+
+.number-generator button {
+  background-color: #c62828;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.number-generator button:hover {
+  background-color: #b71c1c;
+}
+
+.generate-btn {
+  margin-left: 10px;
+  font-size: 0.85em !important;
+}
+
+.news-container {
+  background-color: #ef9a9a;
+  padding: 10px 0;
+}
+
+.news-item {
+  background-color: #c94c4c;
+  margin: 10px 15px;
+  padding: 10px;
+  text-align: center;
+}
+
+.news-title {
+  margin: 0 0 8px;
+  color: #333;
+}
+
+.news-content {
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  font-size: 0.85em;
+}
+
+.remove-btn {
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+#task2 {
+  border: 1px solid black;
+  margin-top: 20px;
+}
+
+.palette {
+  padding: 10px;
+}
+
+.palette-row {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 2px;
+}
+
+.color-btn {
+  width: 25px;
+  height: 25px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+#task3 {
+  border: 1px solid black;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+#text-block {
+  background-color: #ef9a9a;
+  padding: 15px;
+  font-size: 0.9em;
+}
+
+#task4 {
+  border: 1px solid black;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.fruit-item {
+  list-style: none;
+  padding: 8px 15px;
+  margin-bottom: 4px;
+  color: white;
+  font-weight: bold;
+}
+
+.color-filter-btn {
+  color: black;
+  border: 1px solid gray;
+  padding: 3px 10px;
+  cursor: pointer;
+  margin: 0;
+}
+
+.star {
+  cursor: pointer;
+  font-size: 1.2em;
+}
+
+#fruits ul {
+  padding-left: 20px;
+}
