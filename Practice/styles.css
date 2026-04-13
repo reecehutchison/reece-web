@@ -1,0 +1,15 @@
+body {
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+.clicked {
+  color: red;
+}
+
+#color-box {
+  width: 150px;
+  height: 150px;
+  border: 2px solid black;
+  margin-top: 10px;
+}
