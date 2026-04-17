@@ -644,3 +644,351 @@ transition: transform 0.4s ease, opacity 0.2s linear;  /* multiple */
 - **768px** — tablet
 - **1024px** — desktop
 - **1280px** — large desktop
+
+---
+
+## Chapter 12: DOM (Vanilla JS)
+
+### Entry Points
+```js
+document.documentElement   // <html>
+document.head              // <head>
+document.body              // <body>
+```
+
+### Selecting Elements
+
+| Method | Returns | Notes |
+|--------|---------|-------|
+| `document.getElementById("id")` | Single element | ID only |
+| `document.querySelector("css")` | **First** match | Any CSS selector |
+| `document.querySelectorAll("css")` | **All** matches (static NodeList) | Any CSS selector |
+| `document.getElementsByClassName("x")` | Live HTMLCollection | By class |
+| `document.getElementsByTagName("tag")` | Live HTMLCollection | By tag |
+| `elem.matches("css")` | `true`/`false` | Check if element matches |
+| `elem.closest("css")` | Nearest ancestor matching | Walks up the tree |
+
+### Walking the DOM
+
+**All nodes (includes text/comments):**
+- `childNodes`, `firstChild`, `lastChild`
+- `parentNode`, `nextSibling`, `previousSibling`
+
+**Element-only (usually what you want):**
+- `children`, `firstElementChild`, `lastElementChild`
+- `parentElement`, `nextElementSibling`, `previousElementSibling`
+
+### Node Types & Names
+
+```js
+elem.nodeType    // 1 = element, 3 = text, 9 = document
+elem.tagName     // uppercase tag name — elements only (e.g. "DIV")
+elem.nodeName    // any node — same as tagName for elements
+```
+
+### Reading/Changing Content
+
+| Property | Does |
+|----------|------|
+| `innerHTML` | Get/set HTML inside (parses tags) |
+| `textContent` | Get/set text only (safe, no injection) |
+| `nodeValue` / `data` | Content of text/comment nodes |
+
+### Hiding Elements
+
+```js
+elem.hidden = true;     // DOM property
+// or: <div hidden>...</div>
+```
+
+### Creating, Inserting, Removing
+
+```js
+let div = document.createElement("div");
+div.textContent = "Hello";
+
+parent.append(div);        // inside, at end
+parent.prepend(div);       // inside, at beginning
+node.before(div);          // outside, before
+node.after(div);           // outside, after
+node.replaceWith(div);     // replace
+node.remove();             // delete from DOM
+elem.cloneNode(true);      // deep clone (with children)
+```
+
+### Attributes & Dataset
+
+```js
+elem.hasAttribute("name")
+elem.getAttribute("name")
+elem.setAttribute("name", "value")
+elem.removeAttribute("name")
+
+elem.dataset.something     // reads data-something attribute
+```
+
+### Styles & Classes
+
+```js
+elem.style.backgroundColor = "red";   // camelCase CSS, always include units
+elem.style.cssText = "color: red; padding: 10px;";
+getComputedStyle(elem).marginTop;     // resolved/final style
+
+elem.className = "foo bar";
+elem.classList.add("x");
+elem.classList.remove("x");
+elem.classList.toggle("x");
+elem.classList.contains("x");
+```
+
+### Events
+
+```js
+elem.addEventListener("click", handler);
+elem.addEventListener("click", handler, { once: true });
+elem.removeEventListener("click", handler);   // needs same function ref
+```
+
+**Common event types:**
+
+| Category | Events |
+|----------|--------|
+| Mouse | `click`, `dblclick`, `contextmenu`, `mouseover`, `mouseout`, `mouseenter`, `mouseleave`, `mousedown`, `mouseup`, `mousemove` |
+| Keyboard | `keydown`, `keyup`, `keypress` |
+| Form | `submit`, `change`, `input`, `focus`, `blur` |
+| Document | `DOMContentLoaded`, `load`, `scroll`, `resize` |
+| CSS | `transitionend`, `animationend` |
+
+### Event Object
+
+```js
+elem.addEventListener("click", function(event) {
+  event.type             // "click"
+  event.target           // element that originated event (deepest)
+  event.currentTarget    // element the handler is on (same as `this`)
+  event.clientX, clientY // cursor coordinates
+  event.key              // key pressed (keyboard events)
+  event.preventDefault() // cancel default action (e.g. form submit)
+  event.stopPropagation() // stop bubbling
+});
+```
+
+### Object Handlers (handleEvent)
+
+```js
+let obj = {
+  handleEvent(event) {
+    alert(event.type + " at " + event.currentTarget);
+  }
+};
+elem.addEventListener("click", obj);  // calls obj.handleEvent(event)
+```
+
+### Bubbling, Capturing, Delegation
+
+- **Bubbling:** event goes from target UP to `document` (default)
+- **Capturing:** event goes DOWN from `document` to target — pass `true` as 3rd arg
+- **Delegation:** one handler on parent, use `event.target` to figure out which child
+
+```js
+document.getElementById("menu").addEventListener("click", function(e) {
+  let action = e.target.dataset.action;
+  if (action === "save") { /* ... */ }
+});
+```
+
+---
+
+## Chapter 13: jQuery
+
+### Setup
+```html
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+```
+
+### Document Ready
+```js
+$(document).ready(function() { /* ... */ });
+$(function() { /* shorter */ });
+```
+
+### Selecting & Creating
+
+```js
+$("p")              // all <p>
+$("#id")            // by id
+$(".class")         // by class
+$("a[target='_blank']")  // attribute selector
+$("ul li:first-child")   // compound CSS
+$("*")              // all elements
+$(this)             // wrap current DOM element
+$("<li>")           // CREATE a new <li>
+```
+
+### Custom jQuery Selectors
+
+| Selector | Matches |
+|----------|---------|
+| `:first` / `:last` | First/last match |
+| `:even` / `:odd` | Even/odd indices |
+| `:header` | `h1`–`h6` |
+| `:animated` | Currently animating |
+| `:contains('text')` | Contains text |
+| `:has(sel)` | Contains matching descendant |
+| `[href]` | Has href attribute |
+
+### Events
+
+```js
+$("#btn").click(function() { /* ... */ });
+$("#btn").on("click", function() { /* ... */ });
+$("#btn").on("mouseenter mouseleave", fn);  // multiple at once
+$("#btn").on({ click: fnA, mouseenter: fnB });  // different handlers
+$("#btn").off("click");  // remove
+$("p").hover(enterFn, leaveFn);  // special: takes 2 functions
+```
+
+**Event methods:** `click`, `dblclick`, `mouseenter`, `mouseleave`, `mousedown`, `mouseup`, `hover`, `keypress`, `keydown`, `keyup`, `submit`, `change`, `focus`, `blur`, `ready`, `load`, `resize`, `scroll`
+
+### Getters/Setters (call with arg = set, without = get)
+
+```js
+$("#test").text()                     // get text
+$("#test").text("New")                // set text
+$("#test").html()                     // get HTML
+$("#test").html("<b>New</b>")         // set HTML
+$("input").val()                      // get input value
+$("input").val("hi")                  // set input value
+$("a").attr("href")                   // get attribute
+$("a").attr("href", "url")            // set attribute
+$("a").attr({ href: "url", title: "x" })  // set multiple
+$("a").removeAttr("href")
+```
+
+### Classes & CSS
+
+```js
+$("p").addClass("highlight")
+$("p").removeClass("highlight")
+$("p").toggleClass("highlight")
+$("p").hasClass("highlight")
+
+$("p").css("color")                                     // get
+$("p").css("color", "red")                              // set one
+$("p").css({ color: "red", "font-size": "20px" })       // set many
+```
+
+### Insert / Remove
+
+```js
+$("p").append("<b>end</b>")       // inside, at end
+$("p").prepend("<b>start</b>")    // inside, at beginning
+$("p").after("<p>after</p>")      // outside, after
+$("p").before("<p>before</p>")    // outside, before
+
+$("p").remove()                   // remove element
+$("p").remove(".test")            // filtered removal
+$("p").empty()                    // remove all children
+```
+
+### Effects
+
+```js
+$("p").hide(speed, callback)
+$("p").show(speed, callback)
+$("p").toggle(speed, callback)
+
+$("p").fadeIn(speed, callback)
+$("p").fadeOut(speed, callback)
+$("p").fadeToggle(speed, callback)
+$("p").fadeTo(speed, opacity, callback)
+
+$("p").slideDown(speed, callback)
+$("p").slideUp(speed, callback)
+$("p").slideToggle(speed, callback)
+
+$("p").animate({ left: "250px", opacity: "0.5" }, speed, callback)
+$("p").animate({ left: "+=50px" })   // relative
+$("p").stop(clearQueue, jumpToEnd)
+```
+
+- `speed`: `"slow"`, `"fast"`, or ms (e.g., `400`)
+- Animate uses camelCase CSS properties, numeric values only
+
+### Chaining
+
+```js
+$("#p1")
+  .css("color", "red")
+  .slideUp(2000)
+  .slideDown(2000);
+```
+- Getters (`.text()`, `.val()`) break the chain (they return a value, not the jQuery object)
+
+### Traversing
+
+| Method | Returns |
+|--------|---------|
+| `.parent()` | Direct parent |
+| `.parents()` | All ancestors |
+| `.parentsUntil(sel)` | Ancestors up to selector |
+| `.children()` | Direct children |
+| `.find(sel)` | All descendants matching |
+| `.siblings()` | All siblings |
+| `.next()` / `.prev()` | Next/previous sibling |
+| `.nextAll()` / `.prevAll()` | All next/previous siblings |
+| `.nextUntil(sel)` / `.prevUntil(sel)` | Until selector |
+
+### Filtering
+
+```js
+$("div").first()
+$("div").last()
+$("p").eq(1)              // by index (0-based)
+$("p").filter(".intro")   // keep matching
+$("p").not(".intro")      // keep non-matching
+```
+
+### Making a jQuery Plugin
+
+```js
+(function($) {
+  $.fn.myPlugin = function(options) {
+    let settings = $.extend({
+      color: "green",
+      fontSize: "16px"
+    }, options);
+
+    return this.each(function() {    // iterate over each matched element
+      $(this).css({
+        color: settings.color,
+        fontSize: settings.fontSize
+      });
+    });
+  };
+})(jQuery);
+
+// Usage:
+$("p").myPlugin({ color: "red" });
+```
+
+- IIFE wrapper `(function($){ ... })(jQuery)` — protects `$` alias
+- `$.fn.name` — adds method to all jQuery objects
+- Always `return this` (or `return this.each()`) for chaining
+- `$.extend(defaults, options)` — merges user options over defaults
+
+### Vanilla DOM vs jQuery Quick Reference
+
+| Task | Vanilla | jQuery |
+|------|---------|--------|
+| Select by id | `document.getElementById("x")` | `$("#x")` |
+| Select by class | `document.querySelectorAll(".x")` | `$(".x")` |
+| Add class | `elem.classList.add("x")` | `$(sel).addClass("x")` |
+| Set style | `elem.style.color = "red"` | `$(sel).css("color","red")` |
+| Set text | `elem.textContent = "hi"` | `$(sel).text("hi")` |
+| Set HTML | `elem.innerHTML = "<b>hi</b>"` | `$(sel).html("<b>hi</b>")` |
+| Click event | `elem.addEventListener("click", fn)` | `$(sel).click(fn)` |
+| Create elem | `document.createElement("li")` | `$("<li>")` |
+| Append | `parent.append(child)` | `$(parent).append(child)` |
+| Remove | `elem.remove()` | `$(sel).remove()` |
+| Input value | `input.value` | `$(input).val()` |
