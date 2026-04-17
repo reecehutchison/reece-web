@@ -20,3 +20,9 @@ document.getElementById("apply-btn").addEventListener('click', () => {
   let color = document.getElementById("color-input").value;
   document.getElementById("color-box").style.backgroundColor = color;
 });
+
+
+
+$("#j-btn").click(function() { 
+  console.log("hi from j query!")
+});
