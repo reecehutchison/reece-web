@@ -60,3 +60,34 @@ document.getElementById("todo-list").addEventListener("click", function(e) {
     e.target.closest('li').remove(); 
   };
 })
+
+
+class Card {
+  constructor(text, color) {
+    this.text = text; 
+    this.color = color;
+  }
+
+  render() {
+    let newDiv = document.createElement("div"); 
+    newDiv.style.backgroundColor = this.color; 
+
+    let newP = document.createElement("p");
+    newP.textContent = this.text; 
+
+    newDiv.append(newP); 
+
+    newDiv.className = "card"
+
+    return newDiv; 
+  }
+}
+
+$("#card-add").click(function() {
+  title = $("#card-title").val(); 
+  color = $("#card-color").val(); 
+  
+  let newCard = new Card(title, color);
+  let item = newCard.render(); 
+  $("#card-container").append(item);
+})
