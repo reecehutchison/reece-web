@@ -26,3 +26,37 @@ document.getElementById("apply-btn").addEventListener('click', () => {
 $("#j-btn").click(function() { 
   console.log("hi from j query!")
 });
+
+
+class TodoItem {
+  constructor(text) {
+    this.text = text; 
+    this.id = Date.now(); 
+  }
+
+  render() {
+    let li = document.createElement("li");
+    li.textContent = this.text; 
+
+    let btn = document.createElement("button");
+    btn.textContent = "del"; 
+    btn.className = "delete-btn";
+
+    li.append(btn); 
+    return li; 
+  }
+}
+
+document.getElementById("todo-add").addEventListener('click', () => {
+  let msg = document.getElementById('todo-input').value; 
+  let itemObj = new TodoItem(msg); 
+  let todo = itemObj.render(); 
+  document.getElementById('todo-list').append(todo); 
+});
+
+
+document.getElementById("todo-list").addEventListener("click", function(e) {
+  if (e.target.matches(".delete-btn")) {
+    e.target.closest('li').remove(); 
+  };
+})
