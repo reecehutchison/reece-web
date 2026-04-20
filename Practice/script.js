@@ -91,3 +91,39 @@ $("#card-add").click(function() {
   let item = newCard.render(); 
   $("#card-container").append(item);
 })
+
+let itemCount = 0;
+
+document.getElementById("shop-dec-btn").addEventListener("click", () => {
+  if (itemCount <= 0) {
+    return; 
+  }
+  document.getElementById("item-count").textContent = --itemCount; 
+});
+
+document.getElementById("shop-inc-btn").addEventListener("click", () => {
+  document.getElementById("item-count").textContent = ++itemCount; 
+});
+
+class Item {
+  constructor(item, count) {
+    this.item = item; 
+    this.count = count;
+  }
+
+  render() {
+    let item = document.createElement("li"); 
+    item.textContent = this.item + ` x ${this.count}`;
+
+    return item; 
+  }
+}
+
+
+document.getElementById("shop-add-btn").addEventListener("click", () => {
+  let item = document.getElementById("shopping-input").value; 
+  let count = document.getElementById("item-count").textContent; 
+
+  let listItem = new Item(item, count).render(); 
+  document.getElementById("shopping-list").append(listItem);
+});
